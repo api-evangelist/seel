@@ -1,0 +1,218 @@
+openapi: 3.1.0
+info:
+  title: Seel Commerce Protection Bill Order API
+  version: 2.6.0
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: Reconstructed from Seel's published developer documentation index (https://developer.seel.com/llms.txt) and the API Reference at https://developer.seel.com/reference. Operation ids and resources are taken verbatim from the documentation; the /ecommerce/quotes and /ecommerce/orders paths, the api-test.seel.com/v1 base URL, the X-Seel-Api-Key / X-Seel-Api-Version headers, and the {error, trace_id} error envelope were verified against the reference pages (introduction.md, createquote.md, createorder.md, error-handling.md). Sub-resource paths (batch, cancel, plans, items) follow the documented REST conventions. This is a faithful reconstruction, not the vendor's verbatim OpenAPI (ReadMe does not publish a downloadable spec).
+  description: Seel is a post-purchase protection / e-commerce insurance platform. The API lets merchants request Quotes for protection (Worry-Free Purchase, Extended Warranty, return/fulfillment/price-drop coverage), bind coverage to Orders (producing Contracts), manage Products, Fulfillments, Claims, and Bills, and emit Events. Authentication is a per-merchant API key sent in the X-Seel-Api-Key header; the API version is selected with the X-Seel-Api-Version header.
+  contact:
+    name: Seel Merchant Support
+    email: merchant@seel.com
+    url: https://developer.seel.com/docs/welcome-to-seel
+  termsOfService: https://www.seel.com/terms-of-service
+servers:
+- url: https://api-test.seel.com/v1
+  description: Test environment (documented base URL for integration/testing)
+security:
+- SeelApiKey: []
+tags:
+- name: Order
+paths:
+  /ecommerce/orders:
+    post:
+      operationId: createorder
+      summary: Create an order
+      tags:
+      - Order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+      responses:
+        '200':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+  /ecommerce/orders/batch:
+    post:
+      operationId: createorderbatch
+      summary: Batch create orders
+      tags:
+      - Order
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '400':
+          $ref: '#/components/responses/Error'
+  /ecommerce/orders/{order_id}:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getorder
+      summary: Get an order
+      tags:
+      - Order
+      responses:
+        '200':
+          description: Order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          $ref: '#/components/responses/Error'
+    patch:
+      operationId: updateorder
+      summary: Update an order
+      tags:
+      - Order
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '404':
+          $ref: '#/components/responses/Error'
+  /ecommerce/orders/{order_id}/cancel:
+    parameters:
+    - name: order_id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      operationId: cancelorder
+      summary: Cancel an order
+      tags:
+      - Order
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '404':
+          $ref: '#/components/responses/Error'
+components:
+  responses:
+    OK:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    OrderRequest:
+      type: object
+      required:
+      - order_id
+      - order_number
+      - session_id
+      - created_ts
+      - line_items
+      - shipping_address
+      - customer
+      - device_category
+      - device_platform
+      properties:
+        order_id:
+          type: string
+        order_number:
+          type: string
+        session_id:
+          type: string
+        created_ts:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+        shipping_address:
+          type: object
+        customer:
+          type: object
+        device_category:
+          type: string
+        device_platform:
+          type: string
+        seel_services:
+          type: array
+          description: Protection services to bind; each references a quote_id.
+          items:
+            type: object
+            properties:
+              quote_id:
+                type: string
+    Error:
+      type: object
+      description: Seel error envelope (not RFC 9457 problem+json).
+      properties:
+        error:
+          type: string
+          description: Human-readable description of the error.
+        trace_id:
+          type: string
+          description: Unique trace identifier to include when contacting support.
+    Order:
+      type: object
+      properties:
+        order_id:
+          type: string
+        order_number:
+          type: string
+        session_id:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+        shipping_address:
+          type: object
+        customer:
+          type: object
+        seel_services:
+          type: array
+          items:
+            type: object
+            properties:
+              contract_id:
+                type: string
+              quote_id:
+                type: string
+        fulfillments:
+          type: array
+          items:
+            type: object
+            properties:
+              fulfillment_id:
+                type: string
+        refunds:
+          type: array
+          items:
+            type: object
+            properties:
+              refund_id:
+                type: string
+  securitySchemes:
+    SeelApiKey:
+      type: apiKey
+      in: header
+      name: X-Seel-Api-Key
+      description: Per-merchant API key. Obtain from Seel (merchant@seel.com). The API version is selected with the companion X-Seel-Api-Version header (e.g. 2.6.0).
+externalDocs:
+  description: Seel Developer Documentation
+  url: https://developer.seel.com/docs/welcome-to-seel

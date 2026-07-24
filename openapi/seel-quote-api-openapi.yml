@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: Seel Commerce Protection Bill Quote API
+  version: 2.6.0
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: Reconstructed from Seel's published developer documentation index (https://developer.seel.com/llms.txt) and the API Reference at https://developer.seel.com/reference. Operation ids and resources are taken verbatim from the documentation; the /ecommerce/quotes and /ecommerce/orders paths, the api-test.seel.com/v1 base URL, the X-Seel-Api-Key / X-Seel-Api-Version headers, and the {error, trace_id} error envelope were verified against the reference pages (introduction.md, createquote.md, createorder.md, error-handling.md). Sub-resource paths (batch, cancel, plans, items) follow the documented REST conventions. This is a faithful reconstruction, not the vendor's verbatim OpenAPI (ReadMe does not publish a downloadable spec).
+  description: Seel is a post-purchase protection / e-commerce insurance platform. The API lets merchants request Quotes for protection (Worry-Free Purchase, Extended Warranty, return/fulfillment/price-drop coverage), bind coverage to Orders (producing Contracts), manage Products, Fulfillments, Claims, and Bills, and emit Events. Authentication is a per-merchant API key sent in the X-Seel-Api-Key header; the API version is selected with the X-Seel-Api-Version header.
+  contact:
+    name: Seel Merchant Support
+    email: merchant@seel.com
+    url: https://developer.seel.com/docs/welcome-to-seel
+  termsOfService: https://www.seel.com/terms-of-service
+servers:
+- url: https://api-test.seel.com/v1
+  description: Test environment (documented base URL for integration/testing)
+security:
+- SeelApiKey: []
+tags:
+- name: Quote
+paths:
+  /ecommerce/quotes:
+    post:
+      operationId: createquote
+      summary: Create a quote
+      tags:
+      - Quote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+      responses:
+        '200':
+          description: Quote created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+        '400':
+          $ref: '#/components/responses/Error'
+        '401':
+          $ref: '#/components/responses/Error'
+        '500':
+          $ref: '#/components/responses/Error'
+  /ecommerce/quotes/{quote_id}:
+    parameters:
+    - name: quote_id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getquote
+      summary: Get a quote
+      tags:
+      - Quote
+      responses:
+        '200':
+          description: Quote
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Quote'
+        '404':
+          $ref: '#/components/responses/Error'
+components:
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    QuoteRequest:
+      type: object
+      required:
+      - line_items
+      - session_id
+      - shipping_address
+      - customer
+      - type
+      - device_category
+      - device_platform
+      - is_default_on
+      properties:
+        line_items:
+          type: array
+          items:
+            type: object
+          description: Cart line items (Item objects).
+        session_id:
+          type: string
+        shipping_address:
+          type: object
+        customer:
+          type: object
+        type:
+          type: string
+          description: Protection type (e.g. Worry-Free Purchase).
+        device_category:
+          type: string
+        device_platform:
+          type: string
+        is_default_on:
+          type: boolean
+        cart_id:
+          type: string
+        merchant_id:
+          type: string
+        device_id:
+          type: string
+        client_ip:
+          type: string
+        extra_info:
+          type: object
+    Quote:
+      type: object
+      properties:
+        quote_id:
+          type: string
+        cart_id:
+          type: string
+        merchant_id:
+          type: string
+        session_id:
+          type: string
+        device_id:
+          type: string
+        device_category:
+          type: string
+        device_platform:
+          type: string
+        client_ip:
+          type: string
+        type:
+          type: string
+        price:
+          type: number
+        sales_tax:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+        is_default_on:
+          type: boolean
+        created_ts:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+        coverages:
+          type: array
+          items:
+            type: object
+        shipping_address:
+          type: object
+        customer:
+          type: object
+        extra_info:
+          type: object
+    Error:
+      type: object
+      description: Seel error envelope (not RFC 9457 problem+json).
+      properties:
+        error:
+          type: string
+          description: Human-readable description of the error.
+        trace_id:
+          type: string
+          description: Unique trace identifier to include when contacting support.
+  securitySchemes:
+    SeelApiKey:
+      type: apiKey
+      in: header
+      name: X-Seel-Api-Key
+      description: Per-merchant API key. Obtain from Seel (merchant@seel.com). The API version is selected with the companion X-Seel-Api-Version header (e.g. 2.6.0).
+externalDocs:
+  description: Seel Developer Documentation
+  url: https://developer.seel.com/docs/welcome-to-seel

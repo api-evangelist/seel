@@ -1,0 +1,131 @@
+openapi: 3.1.0
+info:
+  title: Seel Commerce Protection Bill Product API
+  version: 2.6.0
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: Reconstructed from Seel's published developer documentation index (https://developer.seel.com/llms.txt) and the API Reference at https://developer.seel.com/reference. Operation ids and resources are taken verbatim from the documentation; the /ecommerce/quotes and /ecommerce/orders paths, the api-test.seel.com/v1 base URL, the X-Seel-Api-Key / X-Seel-Api-Version headers, and the {error, trace_id} error envelope were verified against the reference pages (introduction.md, createquote.md, createorder.md, error-handling.md). Sub-resource paths (batch, cancel, plans, items) follow the documented REST conventions. This is a faithful reconstruction, not the vendor's verbatim OpenAPI (ReadMe does not publish a downloadable spec).
+  description: Seel is a post-purchase protection / e-commerce insurance platform. The API lets merchants request Quotes for protection (Worry-Free Purchase, Extended Warranty, return/fulfillment/price-drop coverage), bind coverage to Orders (producing Contracts), manage Products, Fulfillments, Claims, and Bills, and emit Events. Authentication is a per-merchant API key sent in the X-Seel-Api-Key header; the API version is selected with the X-Seel-Api-Version header.
+  contact:
+    name: Seel Merchant Support
+    email: merchant@seel.com
+    url: https://developer.seel.com/docs/welcome-to-seel
+  termsOfService: https://www.seel.com/terms-of-service
+servers:
+- url: https://api-test.seel.com/v1
+  description: Test environment (documented base URL for integration/testing)
+security:
+- SeelApiKey: []
+tags:
+- name: Product
+paths:
+  /ecommerce/products:
+    post:
+      operationId: createproduct
+      summary: Create a product
+      tags:
+      - Product
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '400':
+          $ref: '#/components/responses/Error'
+  /ecommerce/products/batch:
+    post:
+      operationId: createproductbatch
+      summary: Batch create products
+      tags:
+      - Product
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '400':
+          $ref: '#/components/responses/Error'
+  /ecommerce/products/{product_id}:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getproduct
+      summary: Get a product
+      tags:
+      - Product
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '404':
+          $ref: '#/components/responses/Error'
+    patch:
+      operationId: updateproduct
+      summary: Update a product
+      tags:
+      - Product
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '404':
+          $ref: '#/components/responses/Error'
+    delete:
+      operationId: deleteproduct
+      summary: Delete a product
+      tags:
+      - Product
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '404':
+          $ref: '#/components/responses/Error'
+  /ecommerce/products/{product_id}/plans:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: getproductplans
+      summary: Get product plans
+      tags:
+      - Product
+      responses:
+        '200':
+          $ref: '#/components/responses/OK'
+        '404':
+          $ref: '#/components/responses/Error'
+components:
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    OK:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+  schemas:
+    Error:
+      type: object
+      description: Seel error envelope (not RFC 9457 problem+json).
+      properties:
+        error:
+          type: string
+          description: Human-readable description of the error.
+        trace_id:
+          type: string
+          description: Unique trace identifier to include when contacting support.
+  securitySchemes:
+    SeelApiKey:
+      type: apiKey
+      in: header
+      name: X-Seel-Api-Key
+      description: Per-merchant API key. Obtain from Seel (merchant@seel.com). The API version is selected with the companion X-Seel-Api-Version header (e.g. 2.6.0).
+externalDocs:
+  description: Seel Developer Documentation
+  url: https://developer.seel.com/docs/welcome-to-seel
