@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from the id-reference fields and resource relationships in
+  openapi/seel-openapi.yml and the Seel object reference
+  (developer.seel.com/docs quotes/contracts/claims, createorder.md). Captures
+  the core entity-relationship graph of the post-purchase protection domain.
+docs: https://developer.seel.com/docs/welcome-to-seel
+notation: >-
+  relationships use has_one / has_many / belongs_to with the foreign-key field
+  name; direction is from the entity that owns the reference.
+entities:
+  - {name: Merchant, id_field: merchant_id, domain: account, description: A merchant account offering Seel protection.}
+  - {name: Product, id_field: product_id, domain: catalog, description: A merchant product, with one or more protection plans.}
+  - {name: Quote, id_field: quote_id, domain: protection, description: A priced protection offer for a cart/session.}
+  - {name: Order, id_field: order_id, domain: commerce, description: A merchant order that binds one or more Seel services.}
+  - {name: Contract, id_field: contract_id, domain: protection, description: An active protection policy created when an order binds a quote.}
+  - {name: Fulfillment, id_field: fulfillment_id, domain: commerce, description: A shipment/fulfillment against an order.}
+  - {name: Claim, id_field: claim_id, domain: resolution, description: A customer claim against a contract.}
+  - {name: Bill, id_field: bill_id, domain: billing, description: A merchant bill for protection premiums.}
+  - {name: BillItem, id_field: bill_item_id, domain: billing, description: A line item within a bill.}
+  - {name: Event, id_field: id, domain: platform, description: A merchant/lifecycle event; contract.* and claim.* events are delivered via webhooks.}
+relationships:
+  - {from: Product, to: Merchant, kind: belongs_to, via: merchant_id}
+  - {from: Quote, to: Merchant, kind: belongs_to, via: merchant_id}
+  - {from: Order, to: Quote, kind: has_many, via: 'seel_services[].quote_id'}
+  - {from: Order, to: Contract, kind: has_many, via: 'seel_services[].contract_id'}
+  - {from: Order, to: Fulfillment, kind: has_many, via: 'fulfillments[].fulfillment_id'}
+  - {from: Contract, to: Quote, kind: belongs_to, via: quote_id}
+  - {from: Claim, to: Contract, kind: belongs_to, via: contract_id}
+  - {from: Bill, to: BillItem, kind: has_many, via: items}
+  - {from: Bill, to: Merchant, kind: belongs_to, via: merchant_id}

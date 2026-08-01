@@ -1,0 +1,30 @@
+{
+  "provider": "seel",
+  "sources": [
+    "seel-bill-api-openapi.yml",
+    "seel-claim-api-openapi.yml",
+    "seel-contract-api-openapi.yml",
+    "seel-event-api-openapi.yml",
+    "seel-fulfillment-api-openapi.yml",
+    "seel-merchant-api-openapi.yml",
+    "seel-order-api-openapi.yml",
+    "seel-product-api-openapi.yml",
+    "seel-quote-api-openapi.yml"
+  ],
+  "outputs": [
+    "seel-bill-api-openapi.yml",
+    "seel-claim-api-openapi.yml",
+    "seel-contract-api-openapi.yml",
+    "seel-event-api-openapi.yml",
+    "seel-fulfillment-api-openapi.yml",
+    "seel-merchant-api-openapi.yml",
+    "seel-order-api-openapi.yml",
+    "seel-product-api-openapi.yml",
+    "seel-quote-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

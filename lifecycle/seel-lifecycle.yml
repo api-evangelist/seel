@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://developer.seel.com/reference/introduction.md (version header) and the
+  API Reference version selector (v2.1.0, v2.3.0, v2.6.0). No public status page,
+  numeric SLA, or RFC 8594 Sunset/Deprecation-header policy was found.
+versioning:
+  scheme: semantic (per-request header)
+  mechanism: X-Seel-Api-Version request header
+  example: 2.6.0
+  versions: [2.1.0, 2.3.0, 2.6.0]
+  docs: https://developer.seel.com/reference/introduction
+  notes: >-
+    The API version is pinned per request via the X-Seel-Api-Version header;
+    multiple versions are served concurrently through the reference version
+    selector.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No public deprecation policy or RFC 8594 Sunset/Deprecation headers documented.
+sla:
+  url: null
+  public_uptime_target: null
+  notes: No public numeric uptime SLA published.
+status_page: null
+changelog: null

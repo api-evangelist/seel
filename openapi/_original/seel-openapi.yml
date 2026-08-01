@@ -1,0 +1,454 @@
+openapi: 3.1.0
+info:
+  title: Seel Commerce Protection API
+  version: 2.6.0
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: >-
+    Reconstructed from Seel's published developer documentation index
+    (https://developer.seel.com/llms.txt) and the API Reference at
+    https://developer.seel.com/reference. Operation ids and resources are taken
+    verbatim from the documentation; the /ecommerce/quotes and /ecommerce/orders
+    paths, the api-test.seel.com/v1 base URL, the X-Seel-Api-Key /
+    X-Seel-Api-Version headers, and the {error, trace_id} error envelope were
+    verified against the reference pages (introduction.md, createquote.md,
+    createorder.md, error-handling.md). Sub-resource paths (batch, cancel,
+    plans, items) follow the documented REST conventions. This is a faithful
+    reconstruction, not the vendor's verbatim OpenAPI (ReadMe does not publish a
+    downloadable spec).
+  description: >-
+    Seel is a post-purchase protection / e-commerce insurance platform. The API
+    lets merchants request Quotes for protection (Worry-Free Purchase, Extended
+    Warranty, return/fulfillment/price-drop coverage), bind coverage to Orders
+    (producing Contracts), manage Products, Fulfillments, Claims, and Bills, and
+    emit Events. Authentication is a per-merchant API key sent in the
+    X-Seel-Api-Key header; the API version is selected with the
+    X-Seel-Api-Version header.
+  contact:
+    name: Seel Merchant Support
+    email: merchant@seel.com
+    url: https://developer.seel.com/docs/welcome-to-seel
+  termsOfService: https://www.seel.com/terms-of-service
+servers:
+  - url: https://api-test.seel.com/v1
+    description: Test environment (documented base URL for integration/testing)
+externalDocs:
+  description: Seel Developer Documentation
+  url: https://developer.seel.com/docs/welcome-to-seel
+security:
+  - SeelApiKey: []
+tags:
+  - name: Merchant
+  - name: Quote
+  - name: Product
+  - name: Order
+  - name: Fulfillment
+  - name: Contract
+  - name: Claim
+  - name: Bill
+  - name: Event
+paths:
+  /ecommerce/merchants:
+    post:
+      operationId: createmerchant
+      summary: Create a merchant
+      tags: [Merchant]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+    get:
+      operationId: listmerchants
+      summary: List merchants
+      tags: [Merchant]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '401': {$ref: '#/components/responses/Error'}
+  /ecommerce/merchants/{merchant_id}:
+    parameters:
+      - {name: merchant_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getmerchant
+      summary: Get a merchant
+      tags: [Merchant]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+    patch:
+      operationId: updatemerchant
+      summary: Update a merchant
+      tags: [Merchant]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/quotes:
+    post:
+      operationId: createquote
+      summary: Create a quote
+      tags: [Quote]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/QuoteRequest'}
+      responses:
+        '200':
+          description: Quote created
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Quote'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '500': {$ref: '#/components/responses/Error'}
+  /ecommerce/quotes/{quote_id}:
+    parameters:
+      - {name: quote_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getquote
+      summary: Get a quote
+      tags: [Quote]
+      responses:
+        '200':
+          description: Quote
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Quote'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/products:
+    post:
+      operationId: createproduct
+      summary: Create a product
+      tags: [Product]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+  /ecommerce/products/batch:
+    post:
+      operationId: createproductbatch
+      summary: Batch create products
+      tags: [Product]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+  /ecommerce/products/{product_id}:
+    parameters:
+      - {name: product_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getproduct
+      summary: Get a product
+      tags: [Product]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+    patch:
+      operationId: updateproduct
+      summary: Update a product
+      tags: [Product]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+    delete:
+      operationId: deleteproduct
+      summary: Delete a product
+      tags: [Product]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/products/{product_id}/plans:
+    parameters:
+      - {name: product_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getproductplans
+      summary: Get product plans
+      tags: [Product]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/orders:
+    post:
+      operationId: createorder
+      summary: Create an order
+      tags: [Order]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/OrderRequest'}
+      responses:
+        '200':
+          description: Order created
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Order'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+  /ecommerce/orders/batch:
+    post:
+      operationId: createorderbatch
+      summary: Batch create orders
+      tags: [Order]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+  /ecommerce/orders/{order_id}:
+    parameters:
+      - {name: order_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getorder
+      summary: Get an order
+      tags: [Order]
+      responses:
+        '200':
+          description: Order
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Order'}
+        '404': {$ref: '#/components/responses/Error'}
+    patch:
+      operationId: updateorder
+      summary: Update an order
+      tags: [Order]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/orders/{order_id}/cancel:
+    parameters:
+      - {name: order_id, in: path, required: true, schema: {type: string}}
+    post:
+      operationId: cancelorder
+      summary: Cancel an order
+      tags: [Order]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/fulfillments:
+    post:
+      operationId: createfulfillment
+      summary: Create a fulfillment
+      tags: [Fulfillment]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+    get:
+      operationId: listfulfillments
+      summary: List fulfillments
+      tags: [Fulfillment]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '401': {$ref: '#/components/responses/Error'}
+  /ecommerce/fulfillments/{fulfillment_id}:
+    parameters:
+      - {name: fulfillment_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getfulfillment
+      summary: Get a fulfillment
+      tags: [Fulfillment]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+    patch:
+      operationId: updatefulfillment
+      summary: Update a fulfillment
+      tags: [Fulfillment]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/fulfillments/{fulfillment_id}/cancel:
+    parameters:
+      - {name: fulfillment_id, in: path, required: true, schema: {type: string}}
+    post:
+      operationId: cancelfulfillment
+      summary: Cancel a fulfillment
+      tags: [Fulfillment]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/contracts:
+    get:
+      operationId: listcontracts
+      summary: List contracts
+      tags: [Contract]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '401': {$ref: '#/components/responses/Error'}
+  /ecommerce/contracts/{contract_id}:
+    parameters:
+      - {name: contract_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getcontract
+      summary: Get a contract
+      tags: [Contract]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/claims:
+    get:
+      operationId: listclaims
+      summary: List claims
+      tags: [Claim]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '401': {$ref: '#/components/responses/Error'}
+  /ecommerce/claims/{claim_id}:
+    parameters:
+      - {name: claim_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getclaim
+      summary: Get a claim
+      tags: [Claim]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/bills:
+    get:
+      operationId: listbills
+      summary: List bills
+      tags: [Bill]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '401': {$ref: '#/components/responses/Error'}
+  /ecommerce/bills/{bill_id}:
+    parameters:
+      - {name: bill_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: getbill
+      summary: Get a bill
+      tags: [Bill]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/bills/{bill_id}/items:
+    parameters:
+      - {name: bill_id, in: path, required: true, schema: {type: string}}
+    get:
+      operationId: listbillitems
+      summary: Get bill details
+      tags: [Bill]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '404': {$ref: '#/components/responses/Error'}
+  /ecommerce/events:
+    post:
+      operationId: createevent
+      summary: Create events
+      tags: [Event]
+      responses:
+        '200': {$ref: '#/components/responses/OK'}
+        '400': {$ref: '#/components/responses/Error'}
+components:
+  securitySchemes:
+    SeelApiKey:
+      type: apiKey
+      in: header
+      name: X-Seel-Api-Key
+      description: >-
+        Per-merchant API key. Obtain from Seel (merchant@seel.com). The API
+        version is selected with the companion X-Seel-Api-Version header
+        (e.g. 2.6.0).
+  responses:
+    OK:
+      description: Successful response
+      content:
+        application/json:
+          schema: {type: object}
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+  schemas:
+    Error:
+      type: object
+      description: Seel error envelope (not RFC 9457 problem+json).
+      properties:
+        error: {type: string, description: Human-readable description of the error.}
+        trace_id: {type: string, description: Unique trace identifier to include when contacting support.}
+    QuoteRequest:
+      type: object
+      required: [line_items, session_id, shipping_address, customer, type, device_category, device_platform, is_default_on]
+      properties:
+        line_items: {type: array, items: {type: object}, description: Cart line items (Item objects).}
+        session_id: {type: string}
+        shipping_address: {type: object}
+        customer: {type: object}
+        type: {type: string, description: Protection type (e.g. Worry-Free Purchase).}
+        device_category: {type: string}
+        device_platform: {type: string}
+        is_default_on: {type: boolean}
+        cart_id: {type: string}
+        merchant_id: {type: string}
+        device_id: {type: string}
+        client_ip: {type: string}
+        extra_info: {type: object}
+    Quote:
+      type: object
+      properties:
+        quote_id: {type: string}
+        cart_id: {type: string}
+        merchant_id: {type: string}
+        session_id: {type: string}
+        device_id: {type: string}
+        device_category: {type: string}
+        device_platform: {type: string}
+        client_ip: {type: string}
+        type: {type: string}
+        price: {type: number}
+        sales_tax: {type: number}
+        currency: {type: string}
+        status: {type: string}
+        is_default_on: {type: boolean}
+        created_ts: {type: string}
+        line_items: {type: array, items: {type: object}}
+        coverages: {type: array, items: {type: object}}
+        shipping_address: {type: object}
+        customer: {type: object}
+        extra_info: {type: object}
+    OrderRequest:
+      type: object
+      required: [order_id, order_number, session_id, created_ts, line_items, shipping_address, customer, device_category, device_platform]
+      properties:
+        order_id: {type: string}
+        order_number: {type: string}
+        session_id: {type: string}
+        created_ts: {type: string}
+        line_items: {type: array, items: {type: object}}
+        shipping_address: {type: object}
+        customer: {type: object}
+        device_category: {type: string}
+        device_platform: {type: string}
+        seel_services:
+          type: array
+          description: Protection services to bind; each references a quote_id.
+          items:
+            type: object
+            properties:
+              quote_id: {type: string}
+    Order:
+      type: object
+      properties:
+        order_id: {type: string}
+        order_number: {type: string}
+        session_id: {type: string}
+        line_items: {type: array, items: {type: object}}
+        shipping_address: {type: object}
+        customer: {type: object}
+        seel_services:
+          type: array
+          items:
+            type: object
+            properties:
+              contract_id: {type: string}
+              quote_id: {type: string}
+        fulfillments:
+          type: array
+          items:
+            type: object
+            properties:
+              fulfillment_id: {type: string}
+        refunds:
+          type: array
+          items:
+            type: object
+            properties:
+              refund_id: {type: string}

@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from openapi/seel-openapi.yml. Every step is
+  grounded in an operationId verified verbatim in the OpenAPI (createquote,
+  createorder, getorder, listclaims, getclaim); cross-cutting rules cite
+  conventions/seel-conventions.yml and errors/seel-problem-types.yml. No
+  provider-published Agent Skill / AGENTS.md was found.
+skills:
+  - file: seel-quote-and-protect-order.md
+    name: Quote and protect an order
+    api: openapi/seel-openapi.yml
+    operations: [createquote, createorder, getorder]
+  - file: seel-track-claim-resolution.md
+    name: Track a claim to resolution
+    api: openapi/seel-openapi.yml
+    operations: [listclaims, getclaim, getcontract]

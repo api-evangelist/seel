@@ -1,22 +1,336 @@
 aid: seel
 name: Seel
-description: Seel is a company surfaced as a portfolio company of lightspeed-venture-partners, techstars
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: >-
+  Seel is a post-purchase protection and e-commerce insurance platform that helps
+  online merchants offer Worry-Free Purchase coverage, Extended Warranty, and
+  return, fulfillment, and price-drop protection to their shoppers. Its API lets
+  merchants request protection Quotes for a cart, bind coverage to Orders
+  (creating Contracts), manage Products, Fulfillments, Claims, and Bills, and emit
+  Events, with contract and claim lifecycle changes delivered via webhooks. Seel
+  serves 5,000+ merchants and has protected 24M+ orders. Backed by Lightspeed
+  Venture Partners and Techstars.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://seel.com/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/seel/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - lightspeed-venture-partners
 - techstars
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched-real-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- E-commerce
+- Insurance
+- Post-Purchase
+- Returns
+- Extended Warranty
+- Fraud
+- Payments
+apis:
+- aid: seel:seel-bill-api
+  name: Seel Bill API
+  description: The Bill API from Seel — 3 operation(s) for bill.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Bill
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-bill-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-claim-api
+  name: Seel Claim API
+  description: The Claim API from Seel — 2 operation(s) for claim.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Claim
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-claim-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-contract-api
+  name: Seel Contract API
+  description: The Contract API from Seel — 2 operation(s) for contract.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Contract
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-contract-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-event-api
+  name: Seel Event API
+  description: The Event API from Seel — 1 operation(s) for event.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Event
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-event-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-fulfillment-api
+  name: Seel Fulfillment API
+  description: The Fulfillment API from Seel — 3 operation(s) for fulfillment.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Fulfillment
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-fulfillment-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-merchant-api
+  name: Seel Merchant API
+  description: The Merchant API from Seel — 2 operation(s) for merchant.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Merchant
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-merchant-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-order-api
+  name: Seel Order API
+  description: The Order API from Seel — 4 operation(s) for order.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-order-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-product-api
+  name: Seel Product API
+  description: The Product API from Seel — 4 operation(s) for product.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-product-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
+- aid: seel:seel-quote-api
+  name: Seel Quote API
+  description: The Quote API from Seel — 2 operation(s) for quote.
+  humanURL: https://developer.seel.com/docs/welcome-to-seel
+  baseURL: https://api-test.seel.com/v1
+  tags:
+  - Quote
+  properties:
+  - type: OpenAPI
+    url: openapi/seel-quote-api-openapi.yml
+  - type: Authentication
+    url: authentication/seel-authentication.yml
+  - type: ErrorCatalog
+    url: errors/seel-problem-types.yml
+  - type: Conventions
+    url: conventions/seel-conventions.yml
+  - type: Conformance
+    url: conformance/seel-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/seel-lifecycle.yml
+  - type: DataModel
+    url: data-model/seel-data-model.yml
+  - type: Sandbox
+    url: sandbox/seel-sandbox.yml
+  - type: AsyncAPI
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/seel-webhooks-asyncapi.yml
+  - type: APIReference
+    url: https://developer.seel.com/reference
+  - type: Documentation
+    url: https://developer.seel.com/docs/welcome-to-seel
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +339,32 @@ maintainers:
 common:
 - type: Website
   url: https://seel.com/
+- type: DeveloperPortal
+  url: https://developer.seel.com/
+- type: Documentation
+  url: https://developer.seel.com/docs/welcome-to-seel
+- type: APIReference
+  url: https://developer.seel.com/reference
+- type: GettingStarted
+  url: https://developer.seel.com/docs/wfp-getting-started
+- type: Blog
+  url: https://seel.com/blog
+- type: HelpCenter
+  url: https://kover2618.zendesk.com/hc/en-us
+- type: TermsOfService
+  url: https://www.seel.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.seel.com/privacy
+- type: LLMsTxt
+  url: llms/seel-llms.txt
+- type: WellKnown
+  url: well-known/seel-well-known.yml
+- type: DomainSecurity
+  url: security/seel-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

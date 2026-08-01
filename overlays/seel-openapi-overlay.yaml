@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for the Seel Commerce Protection API
+  version: 1.0.0
+  x-generated: '2026-07-21'
+  x-method: generated
+  x-source: >-
+    Enhancements layered over openapi/seel-openapi.yml — cross-links to the
+    enrichment artifacts in this repo (conventions, errors, authentication,
+    webhooks, lifecycle). Does not mutate the original OpenAPI.
+extends: ../openapi/seel-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-artifacts:
+        conventions: conventions/seel-conventions.yml
+        errors: errors/seel-problem-types.yml
+        authentication: authentication/seel-authentication.yml
+        webhooks: asyncapi/seel-webhooks-asyncapi.yml
+        lifecycle: lifecycle/seel-lifecycle.yml
+        data_model: data-model/seel-data-model.yml
+      x-api-evangelist:
+        domain: post-purchase-protection
+        error_envelope: '{ error, trace_id } (not RFC 9457)'
+        version_header: X-Seel-Api-Version
+  - target: $.components.securitySchemes.SeelApiKey
+    update:
+      x-companion-header: X-Seel-Api-Version

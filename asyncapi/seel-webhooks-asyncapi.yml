@@ -1,0 +1,75 @@
+asyncapi: 2.6.0
+info:
+  title: Seel Webhooks
+  version: 2.6.0
+  x-generated: '2026-07-21'
+  x-method: searched
+  x-source: >-
+    https://developer.seel.com/reference/webhooks.md — 11 documented contract.*
+    and claim.* event types with a typed Notification payload. Registration is
+    manual (contact merchant@seel.com). No signature-verification header is
+    documented. Channel/event names and payload fields captured verbatim.
+  description: >-
+    Seel delivers webhook notifications to a merchant-configured HTTPS endpoint
+    when protection contract and claim lifecycle events occur. Each notification
+    is a Notification object with id, created_ts, type, and a type-specific data
+    payload. Endpoints should return 200 quickly before running heavy logic.
+  contact:
+    name: Seel Merchant Support
+    email: merchant@seel.com
+    url: https://developer.seel.com/reference/webhooks
+externalDocs:
+  description: Seel Webhook Integration Guide
+  url: https://developer.seel.com/reference/webhooks
+defaultContentType: application/json
+channels:
+  contract.created:
+    description: A protection contract was created.
+    subscribe: {operationId: onContractCreated, message: {$ref: '#/components/messages/Notification'}}
+  contract.activated:
+    description: A protection contract was activated.
+    subscribe: {operationId: onContractActivated, message: {$ref: '#/components/messages/Notification'}}
+  contract.cancelled:
+    description: A protection contract was cancelled.
+    subscribe: {operationId: onContractCancelled, message: {$ref: '#/components/messages/Notification'}}
+  contract.expired:
+    description: A protection contract expired.
+    subscribe: {operationId: onContractExpired, message: {$ref: '#/components/messages/Notification'}}
+  contract.failed:
+    description: A protection contract failed.
+    subscribe: {operationId: onContractFailed, message: {$ref: '#/components/messages/Notification'}}
+  claim.created:
+    description: A claim was created.
+    subscribe: {operationId: onClaimCreated, message: {$ref: '#/components/messages/Notification'}}
+  claim.accepted:
+    description: A claim was accepted.
+    subscribe: {operationId: onClaimAccepted, message: {$ref: '#/components/messages/Notification'}}
+  claim.rejected:
+    description: A claim was rejected.
+    subscribe: {operationId: onClaimRejected, message: {$ref: '#/components/messages/Notification'}}
+  claim.closed:
+    description: A claim was closed.
+    subscribe: {operationId: onClaimClosed, message: {$ref: '#/components/messages/Notification'}}
+  claim.resolved:
+    description: A claim was resolved.
+    subscribe: {operationId: onClaimResolved, message: {$ref: '#/components/messages/Notification'}}
+  claim.reopened:
+    description: A claim was reopened.
+    subscribe: {operationId: onClaimReopened, message: {$ref: '#/components/messages/Notification'}}
+components:
+  messages:
+    Notification:
+      name: Notification
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          id: {type: string, description: Notification id.}
+          created_ts: {type: string, description: Creation timestamp.}
+          type: {type: string, description: Event type (e.g. contract.created, claim.resolved).}
+          data:
+            type: object
+            description: >-
+              Type-specific payload. Contract events include customer details,
+              premium amounts, and coverage information; claim events include
+              payout amounts and claim status.

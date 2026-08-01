@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://developer.seel.com/reference/introduction.md and per-operation
+  reference pages. Seel authenticates every request with a per-merchant API key
+  in the X-Seel-Api-Key header, paired with an X-Seel-Api-Version header to
+  select the API version. No OAuth2/OIDC surface is documented.
+base_url: https://api-test.seel.com/v1
+schemes:
+  - id: SeelApiKey
+    type: apiKey
+    in: header
+    name: X-Seel-Api-Key
+    description: >-
+      Per-merchant secret API key issued by Seel (request via merchant@seel.com).
+      Sent on every request; must never be exposed in client-side code or public
+      repositories.
+    required: true
+version_header:
+  name: X-Seel-Api-Version
+  example: 2.6.0
+  description: Selects the API version (e.g. 2.1.0, 2.3.0, 2.6.0).
+transport:
+  https_required: true
+  notes: All requests must use HTTPS; plain HTTP calls fail.
+oauth2: false
+openid_connect: false
+mutual_tls: false

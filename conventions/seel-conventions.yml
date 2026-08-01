@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://developer.seel.com/reference/introduction.md,
+  /reference/error-handling.md, /reference/webhooks.md and the per-operation
+  reference pages. Cross-cutting request/response semantics that apply across
+  every Seel endpoint (not any single operation).
+description: >-
+  How Seel's REST API behaves across operations: authentication style, version
+  selection, request tracing, error envelope, webhook events, and rate-limit
+  signaling. These are the developer-experience / runtime-semantics conventions
+  that the OpenAPI does not fully express.
+base_url: https://api-test.seel.com/v1
+api_style: REST over HTTPS, JSON request and response bodies
+authentication:
+  scheme: API key in the X-Seel-Api-Key header
+  version_header: X-Seel-Api-Version (e.g. 2.6.0)
+  detail: authentication/seel-authentication.yml
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key mechanism is documented. Client-supplied resource ids
+    (order_id, order_number) provide a degree of natural de-duplication on
+    create-order, but there is no dedicated Idempotency-Key header.
+pagination:
+  documented: partial
+  notes: >-
+    List endpoints exist (list merchants, fulfillments, contracts, claims,
+    bills) but the reference does not publish an explicit page-size / cursor
+    parameter contract.
+request_tracing:
+  field: trace_id
+  location: error response body
+  notes: Every error carries a trace_id to log and quote to support.
+versioning:
+  mechanism: X-Seel-Api-Version request header
+  versions: [2.1.0, 2.3.0, 2.6.0]
+  detail: lifecycle/seel-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  shape: '{ "error": string, "trace_id": string }'
+  rfc9457: false
+  detail: errors/seel-problem-types.yml
+events_webhooks:
+  supported: true
+  detail: asyncapi/seel-webhooks-asyncapi.yml
+  notes: Contract and claim lifecycle changes are delivered as webhook notifications.
+rate_limiting:
+  signal: HTTP 429 (Too Many Requests) when quota is exceeded
+  retry: Retry after a delay / exponential backoff.

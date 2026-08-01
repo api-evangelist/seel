@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://developer.seel.com/reference/introduction.md and the getting-started
+  guides. Seel exposes a dedicated test host; keys are issued per merchant by
+  Seel. No published test cards / magic values / test clocks were found — only
+  the test-vs-live host distinction is documented, so no fixtures are invented
+  here.
+docs:
+  - https://developer.seel.com/docs/wfp-getting-started
+  - https://developer.seel.com/reference/introduction
+modes:
+  - name: test
+    base_url: https://api-test.seel.com/v1
+    notes: >-
+      Documented integration/testing base URL. Exercises the full quote -> order
+      -> contract -> claim flow without production billing.
+  - name: live
+    base_url: null
+    notes: >-
+      Production host is provisioned per merchant; not published in the public
+      docs (not fabricated here).
+credentials:
+  mechanism: Per-merchant API key in X-Seel-Api-Key header
+  issuance: Request test/live keys from Seel (merchant@seel.com).
+test_values:
+  published: false
+  notes: Seel does not publish test cards, tokens, or magic trigger values in its public docs.

@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from openapi/seel-openapi.yml (apiKey securityScheme, error schema,
+  list endpoints) and Seel's documentation claims (developer.seel.com/reference
+  error-handling.md, introduction.md, webhooks.md). Absence of a standard is
+  valid, recorded data.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Authentication is a single apiKey header (X-Seel-Api-Key); no OAuth2 surface documented.
+  - id: oidc
+    conforms: false
+    evidence: No /.well-known/openid-configuration on any host (all 404).
+  - id: rfc9457
+    conforms: false
+    evidence: >-
+      Errors use {"error", "trace_id"}, not application/problem+json with
+      type/title/status/detail (error-handling.md).
+  - id: api-key-auth
+    conforms: true
+    evidence: X-Seel-Api-Key header on every request (introduction.md).
+  - id: webhooks
+    conforms: true
+    evidence: >-
+      11 contract.* and claim.* webhook event types with a typed Notification
+      payload (webhooks.md); captured in asyncapi/seel-webhooks-asyncapi.yml.
+  - id: pagination
+    conforms: false
+    evidence: List endpoints exist but no explicit cursor/page-size parameter contract is published.
+  - id: idempotency
+    conforms: false
+    evidence: No Idempotency-Key mechanism documented.
+  - id: versioning
+    conforms: true
+    evidence: X-Seel-Api-Version request header selects among 2.1.0 / 2.3.0 / 2.6.0.

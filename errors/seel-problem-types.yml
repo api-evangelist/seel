@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: searched
+format: seel-error-object
+source: >-
+  https://developer.seel.com/reference/error-handling.md — Seel does NOT use RFC
+  9457 application/problem+json. Every error is returned as a two-field JSON
+  object {"error": <message>, "trace_id": <id>}. Status codes and remediation
+  captured verbatim from the Error Handling Guide.
+envelope:
+  media_type: application/json
+  shape: '{ "error": "description of the error", "trace_id": "unique-trace-identifier" }'
+  fields:
+    error: Human-readable description of what went wrong.
+    trace_id: Unique trace identifier to log and include when contacting support.
+problems:
+  - status: 400
+    title: Bad Request
+    meaning: Invalid or missing parameters, or data that does not match the referenced quote.
+    remediation: Validate required fields and cross-check submitted data against the quote.
+  - status: 401
+    title: Unauthorized
+    meaning: Missing or invalid API key.
+    remediation: Ensure the X-Seel-Api-Key header includes a valid API key.
+  - status: 404
+    title: Not Found
+    meaning: The requested resource does not exist.
+    remediation: Verify resource IDs exist before performing operations on them.
+  - status: 429
+    title: Too Many Requests
+    meaning: Rate limit / quota exceeded.
+    remediation: Retry after a delay.
+  - status: 500
+    title: Internal Server Error
+    meaning: A failure in Seel's infrastructure.
+    remediation: Implement exponential backoff (max 3-5 attempts) and log the trace_id for support.

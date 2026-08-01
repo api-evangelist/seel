@@ -1,0 +1,63 @@
+# seelapi Documentation
+
+> Documentation for seelapi
+
+## Guides
+- [Welcome to Seel](https://developer.seel.com/docs/welcome-to-seel.md): The Leading Insurance Platform for Commerce
+- [Worry-Free Purchase](https://developer.seel.com/docs/worry-free-purchase.md)
+- [Extended Warranty](https://developer.seel.com/docs/extended-warranty.md)
+- [Quotes](https://developer.seel.com/docs/quotes.md)
+- [Contracts](https://developer.seel.com/docs/contracts.md)
+- [Claims](https://developer.seel.com/docs/claims.md)
+- [Getting Started](https://developer.seel.com/docs/wfp-getting-started.md): Learn how to add Worry-Free Purchase to your website.
+- [Shopify Quickstart](https://developer.seel.com/docs/wfp-shopify-quickstart.md): This guide will walk you through setting up the Seel app on your Shopify store. Our streamlined installation process enables you to integrate the app quickly and easily, with no coding required.
+- [Wix Quickstart](https://developer.seel.com/docs/wfp-wix-quickstart.md): This guide will walk you through setting up the Seel Worry-Free Delivery app on your Wix store. Our streamlined installation process enables you to integrate the app quickly and easily, with no coding required.
+- [DTC/Marketplace Direct Integration Quickstart](https://developer.seel.com/docs/dtcmarketplace-direct-integration.md): This guide covers integrating Seel Worry-Free Purchase into checkout pages for DTC brands and marketplaces, allowing shoppers to add protection.
+- [SaaS Platform Integration Quickstart](https://developer.seel.com/docs/platform-direct-integration.md): This guide outlines the steps required to integrate Seel's Worry-Free Purchase (WFP) program into your SaaS platform, enabling your merchants to offer protection to their shoppers.
+- [Getting Started](https://developer.seel.com/docs/ext-getting-started.md): Learn how to add Seel Extended Warranty to your website.
+- [Shopify Quickstart](https://developer.seel.com/docs/ext-shopify-quickstart.md): This guide will walk you through setting up the Seel app on your Shopify store. Our streamlined installation process enables you to integrate the app quickly and easily, with no coding required.
+- [Direct Integration Quickstart](https://developer.seel.com/docs/ext-integration-guide.md)
+- [Design Guideline](https://developer.seel.com/docs/design-guideline.md): This document provides design guidelines for partners who are building their own opt-in widgets. Following these guidelines will ensure consistency with our brand and provide a seamless user experience.
+- [Code Sample](https://developer.seel.com/docs/code-sample.md)
+- [Operation Quickstart](https://developer.seel.com/docs/operation-quickstart.md)
+- [Using the Merchant Dashboard](https://developer.seel.com/docs/using-the-merchant-dashboard.md)
+- [Program Management With API](https://developer.seel.com/docs/program-management-with-api.md)
+- [Billing and Payment Flow](https://developer.seel.com/docs/billing.md)
+- [Understanding Contracts](https://developer.seel.com/docs/understanding-contracts.md)
+- [Claims & Resolutions](https://developer.seel.com/docs/claims-resolutions.md): This article explains Seel's automated claims and resolutions process, notification system, and claim statuses aimed at efficiently resolving issues for merchants and consumers.
+- [Seel Resolution Center](https://developer.seel.com/docs/seel-resolution-center.md)
+
+## API Reference
+- [Overview](https://developer.seel.com/reference/introduction.md)
+- [Create a merchant](https://developer.seel.com/reference/createmerchant.md)
+- [List merchants](https://developer.seel.com/reference/listmerchants.md)
+- [Update a merchant](https://developer.seel.com/reference/updatemerchant.md)
+- [Get a merchant](https://developer.seel.com/reference/getmerchant.md)
+- [Create a quote](https://developer.seel.com/reference/createquote.md)
+- [Get a quote](https://developer.seel.com/reference/getquote.md)
+- [Create a product](https://developer.seel.com/reference/createproduct.md)
+- [Batch create products](https://developer.seel.com/reference/createproductbatch.md)
+- [Get a product](https://developer.seel.com/reference/getproduct.md)
+- [Update a product](https://developer.seel.com/reference/updateproduct.md)
+- [Delete a product](https://developer.seel.com/reference/deleteproduct.md)
+- [Get product plans](https://developer.seel.com/reference/getproductplans.md)
+- [Create an order](https://developer.seel.com/reference/createorder.md)
+- [Batch create orders](https://developer.seel.com/reference/createorderbatch.md)
+- [Update an order](https://developer.seel.com/reference/updateorder.md)
+- [Get an order](https://developer.seel.com/reference/getorder.md)
+- [Cancel an order](https://developer.seel.com/reference/cancelorder.md)
+- [Create a fulfillment](https://developer.seel.com/reference/createfulfillment.md)
+- [List fulfillments](https://developer.seel.com/reference/listfulfillments.md)
+- [Update a fulfillment](https://developer.seel.com/reference/updatefulfillment.md)
+- [Get a fulfillment](https://developer.seel.com/reference/getfulfillment.md)
+- [Cancel a fulfillment](https://developer.seel.com/reference/cancelfulfillment.md)
+- [List contracts](https://developer.seel.com/reference/listcontracts.md)
+- [Get a contract](https://developer.seel.com/reference/getcontract.md)
+- [List claims](https://developer.seel.com/reference/listclaims.md)
+- [Get a claim](https://developer.seel.com/reference/getclaim.md)
+- [List bills](https://developer.seel.com/reference/listbills.md)
+- [Get a bill](https://developer.seel.com/reference/getbill.md)
+- [Get bill details](https://developer.seel.com/reference/listbillitems.md)
+- [Create events](https://developer.seel.com/reference/createevent.md)
+- [Webhook Integration Guide](https://developer.seel.com/reference/webhooks.md)
+- [Error Handling Guide](https://developer.seel.com/reference/error-handling.md)
