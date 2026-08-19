@@ -1,30 +1,66 @@
 generated: '2026-07-21'
 method: derived
 status: candidate
-source: >-
-  No official hosted or local Seel MCP server was found in the docs or the
-  network. This is a DERIVED candidate tool list mapped 1:1 from the documented
-  REST operations (developer.seel.com/reference) to show what an MCP server over
-  the Seel API could expose. Not published by Seel.
+source: No official hosted or local Seel MCP server was found in the docs or the network. This is a DERIVED
+  candidate tool list mapped 1:1 from the documented REST operations (developer.seel.com/reference) to
+  show what an MCP server over the Seel API could expose. Not published by Seel.
 server:
   name: seel
   transport: candidate
   auth: apiKey (X-Seel-Api-Key)
   base_url: https://api-test.seel.com/v1
 tools:
-  - {name: create_quote, operationId: createquote, description: Request a protection quote for a cart.}
-  - {name: get_quote, operationId: getquote, description: Retrieve a quote by id.}
-  - {name: create_order, operationId: createorder, description: Bind protection to an order (creates contracts).}
-  - {name: get_order, operationId: getorder, description: Retrieve an order and its Seel services.}
-  - {name: cancel_order, operationId: cancelorder, description: Cancel an order.}
-  - {name: create_fulfillment, operationId: createfulfillment, description: Report a fulfillment/shipment.}
-  - {name: list_fulfillments, operationId: listfulfillments, description: List fulfillments.}
-  - {name: get_contract, operationId: getcontract, description: Retrieve a protection contract.}
-  - {name: list_contracts, operationId: listcontracts, description: List contracts.}
-  - {name: get_claim, operationId: getclaim, description: Retrieve a claim.}
-  - {name: list_claims, operationId: listclaims, description: List claims.}
-  - {name: get_bill, operationId: getbill, description: Retrieve a bill.}
-  - {name: list_bills, operationId: listbills, description: List bills.}
-  - {name: create_product, operationId: createproduct, description: Create a product.}
-  - {name: get_product_plans, operationId: getproductplans, description: Get available protection plans for a product.}
-  - {name: create_event, operationId: createevent, description: Emit a merchant event.}
+- name: create_quote
+  operationId: createquote
+  description: Request a protection quote for a cart.
+- name: get_quote
+  operationId: getquote
+  description: Retrieve a quote by id.
+- name: create_order
+  operationId: createorder
+  description: Bind protection to an order (creates contracts).
+- name: get_order
+  operationId: getorder
+  description: Retrieve an order and its Seel services.
+- name: cancel_order
+  operationId: cancelorder
+  description: Cancel an order.
+- name: create_fulfillment
+  operationId: createfulfillment
+  description: Report a fulfillment/shipment.
+- name: list_fulfillments
+  operationId: listfulfillments
+  description: List fulfillments.
+- name: get_contract
+  operationId: getcontract
+  description: Retrieve a protection contract.
+- name: list_contracts
+  operationId: listcontracts
+  description: List contracts.
+- name: get_claim
+  operationId: getclaim
+  description: Retrieve a claim.
+- name: list_claims
+  operationId: listclaims
+  description: List claims.
+- name: get_bill
+  operationId: getbill
+  description: Retrieve a bill.
+- name: list_bills
+  operationId: listbills
+  description: List bills.
+- name: create_product
+  operationId: createproduct
+  description: Create a product.
+- name: get_product_plans
+  operationId: getproductplans
+  description: Get available protection plans for a product.
+- name: create_event
+  operationId: createevent
+  description: Emit a merchant event.
+deployment:
+  mode: none
+  verified: derived
+  tools: 16
+  checked: '2026-08-12'
+  source: catalog MCP census

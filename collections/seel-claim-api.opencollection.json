@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seel Commerce Protection Bill Claim API",
+    "version": "2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Seel-Api-Key",
+      "value": "{{X-Seel-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claim",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/claims"
+          },
+          "docs": "List claims"
+        },
+        {
+          "info": {
+            "name": "Get a claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/claims/:claim_id",
+            "params": [
+              {
+                "name": "claim_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a claim"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

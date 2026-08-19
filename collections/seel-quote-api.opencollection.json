@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seel Commerce Protection Bill Quote API",
+    "version": "2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Seel-Api-Key",
+      "value": "{{X-Seel-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quote",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-test.seel.com/v1/ecommerce/quotes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a quote"
+        },
+        {
+          "info": {
+            "name": "Get a quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/quotes/:quote_id",
+            "params": [
+              {
+                "name": "quote_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a quote"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

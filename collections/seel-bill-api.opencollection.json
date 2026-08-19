@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seel Commerce Protection Bill API",
+    "version": "2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Seel-Api-Key",
+      "value": "{{X-Seel-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bill",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/bills"
+          },
+          "docs": "List bills"
+        },
+        {
+          "info": {
+            "name": "Get a bill",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/bills/:bill_id",
+            "params": [
+              {
+                "name": "bill_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a bill"
+        },
+        {
+          "info": {
+            "name": "Get bill details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/bills/:bill_id/items",
+            "params": [
+              {
+                "name": "bill_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get bill details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seel Commerce Protection Bill Fulfillment API",
+    "version": "2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Seel-Api-Key",
+      "value": "{{X-Seel-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fulfillment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fulfillments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/fulfillments"
+          },
+          "docs": "List fulfillments"
+        },
+        {
+          "info": {
+            "name": "Create a fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-test.seel.com/v1/ecommerce/fulfillments"
+          },
+          "docs": "Create a fulfillment"
+        },
+        {
+          "info": {
+            "name": "Get a fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/fulfillments/:fulfillment_id",
+            "params": [
+              {
+                "name": "fulfillment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a fulfillment"
+        },
+        {
+          "info": {
+            "name": "Update a fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-test.seel.com/v1/ecommerce/fulfillments/:fulfillment_id",
+            "params": [
+              {
+                "name": "fulfillment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a fulfillment"
+        },
+        {
+          "info": {
+            "name": "Cancel a fulfillment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-test.seel.com/v1/ecommerce/fulfillments/:fulfillment_id/cancel",
+            "params": [
+              {
+                "name": "fulfillment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a fulfillment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

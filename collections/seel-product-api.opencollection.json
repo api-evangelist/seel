@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Seel Commerce Protection Bill Product API",
+    "version": "2.6.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Seel-Api-Key",
+      "value": "{{X-Seel-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-test.seel.com/v1/ecommerce/products"
+          },
+          "docs": "Create a product"
+        },
+        {
+          "info": {
+            "name": "Batch create products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api-test.seel.com/v1/ecommerce/products/batch"
+          },
+          "docs": "Batch create products"
+        },
+        {
+          "info": {
+            "name": "Get a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a product"
+        },
+        {
+          "info": {
+            "name": "Update a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api-test.seel.com/v1/ecommerce/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a product"
+        },
+        {
+          "info": {
+            "name": "Delete a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api-test.seel.com/v1/ecommerce/products/:product_id",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a product"
+        },
+        {
+          "info": {
+            "name": "Get product plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api-test.seel.com/v1/ecommerce/products/:product_id/plans",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get product plans"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

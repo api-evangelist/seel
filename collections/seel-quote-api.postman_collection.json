@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "5dec8308-6235-4962-92ad-a62d010ed7b9",
+      "name": "Quote",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "06682810-025a-4bcb-909d-d6592b14f4ae",
+          "name": "Create a quote",
+          "request": {
+            "name": "Create a quote",
+            "description": {},
+            "url": {
+              "path": [
+                "ecommerce",
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"session_id\": \"<string>\",\n  \"shipping_address\": \"<object>\",\n  \"customer\": \"<object>\",\n  \"type\": \"<string>\",\n  \"device_category\": \"<string>\",\n  \"device_platform\": \"<string>\",\n  \"is_default_on\": \"<boolean>\",\n  \"cart_id\": \"<string>\",\n  \"merchant_id\": \"<string>\",\n  \"device_id\": \"<string>\",\n  \"client_ip\": \"<string>\",\n  \"extra_info\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6d58ac1-11da-4971-9e65-dc5597886b45",
+              "name": "Quote created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecommerce",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Seel-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"session_id\": \"<string>\",\n  \"shipping_address\": \"<object>\",\n  \"customer\": \"<object>\",\n  \"type\": \"<string>\",\n  \"device_category\": \"<string>\",\n  \"device_platform\": \"<string>\",\n  \"is_default_on\": \"<boolean>\",\n  \"cart_id\": \"<string>\",\n  \"merchant_id\": \"<string>\",\n  \"device_id\": \"<string>\",\n  \"client_ip\": \"<string>\",\n  \"extra_info\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quote_id\": \"string\",\n  \"cart_id\": \"string\",\n  \"merchant_id\": \"string\",\n  \"session_id\": \"string\",\n  \"device_id\": \"string\",\n  \"device_category\": \"string\",\n  \"device_platform\": \"string\",\n  \"client_ip\": \"string\",\n  \"type\": \"string\",\n  \"price\": 5282.889292273396,\n  \"sales_tax\": 5063.695524305025,\n  \"currency\": \"string\",\n  \"status\": \"string\",\n  \"is_default_on\": false,\n  \"created_ts\": \"string\",\n  \"shipping_address\": {},\n  \"customer\": {},\n  \"extra_info\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "451f3470-1b3a-4dc7-b5a4-d5695b9fe5fd",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecommerce",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Seel-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"session_id\": \"<string>\",\n  \"shipping_address\": \"<object>\",\n  \"customer\": \"<object>\",\n  \"type\": \"<string>\",\n  \"device_category\": \"<string>\",\n  \"device_platform\": \"<string>\",\n  \"is_default_on\": \"<boolean>\",\n  \"cart_id\": \"<string>\",\n  \"merchant_id\": \"<string>\",\n  \"device_id\": \"<string>\",\n  \"client_ip\": \"<string>\",\n  \"extra_info\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b86f0c9f-bfce-475d-bf55-f1cc40edfcbe",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecommerce",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Seel-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"session_id\": \"<string>\",\n  \"shipping_address\": \"<object>\",\n  \"customer\": \"<object>\",\n  \"type\": \"<string>\",\n  \"device_category\": \"<string>\",\n  \"device_platform\": \"<string>\",\n  \"is_default_on\": \"<boolean>\",\n  \"cart_id\": \"<string>\",\n  \"merchant_id\": \"<string>\",\n  \"device_id\": \"<string>\",\n  \"client_ip\": \"<string>\",\n  \"extra_info\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "504c2766-1e97-4a57-89ae-8a033b9b2e3b",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecommerce",
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Seel-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_items\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"session_id\": \"<string>\",\n  \"shipping_address\": \"<object>\",\n  \"customer\": \"<object>\",\n  \"type\": \"<string>\",\n  \"device_category\": \"<string>\",\n  \"device_platform\": \"<string>\",\n  \"is_default_on\": \"<boolean>\",\n  \"cart_id\": \"<string>\",\n  \"merchant_id\": \"<string>\",\n  \"device_id\": \"<string>\",\n  \"client_ip\": \"<string>\",\n  \"extra_info\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58835bf1-a449-4169-9372-4c5860d16d7f",
+          "name": "Get a quote",
+          "request": {
+            "name": "Get a quote",
+            "description": {},
+            "url": {
+              "path": [
+                "ecommerce",
+                "quotes",
+                ":quote_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quote_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb39136b-75ab-4fd0-b60c-97ea9f691dbf",
+              "name": "Quote",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecommerce",
+                    "quotes",
+                    ":quote_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quote_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Seel-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quote_id\": \"string\",\n  \"cart_id\": \"string\",\n  \"merchant_id\": \"string\",\n  \"session_id\": \"string\",\n  \"device_id\": \"string\",\n  \"device_category\": \"string\",\n  \"device_platform\": \"string\",\n  \"client_ip\": \"string\",\n  \"type\": \"string\",\n  \"price\": 5282.889292273396,\n  \"sales_tax\": 5063.695524305025,\n  \"currency\": \"string\",\n  \"status\": \"string\",\n  \"is_default_on\": false,\n  \"created_ts\": \"string\",\n  \"shipping_address\": {},\n  \"customer\": {},\n  \"extra_info\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d8f92ae-4c9a-4a79-8cc1-95bdb581ff27",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ecommerce",
+                    "quotes",
+                    ":quote_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quote_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Seel-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"trace_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api-test.seel.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Seel-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "52d23161-bd9d-43ff-af78-a3dc642bdb79",
+    "name": "Seel Commerce Protection Bill Quote API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Seel is a post-purchase protection / e-commerce insurance platform. The API lets merchants request Quotes for protection (Worry-Free Purchase, Extended Warranty, return/fulfillment/price-drop coverage), bind coverage to Orders (producing Contracts), manage Products, Fulfillments, Claims, and Bills, and emit Events. Authentication is a per-merchant API key sent in the X-Seel-Api-Key header; the API version is selected with the X-Seel-Api-Version header.\n\nContact Support:\n Name: Seel Merchant Support\n Email: merchant@seel.com",
+      "type": "text/plain"
+    }
+  }
+}
