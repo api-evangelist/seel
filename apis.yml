@@ -35,6 +35,15 @@ created: '2026-07-17'
 modified: '2026-07-21'
 tags:
 - Company
+- E-Commerce
+- Insurance
+- Post-Purchase
+- Returns
+- Extended Warranty
+- Fraud
+- Payments
+tags_raw:
+- Company
 - E-commerce
 - Insurance
 - Post-Purchase
@@ -305,6 +314,8 @@ apis:
   humanURL: https://developer.seel.com/docs/welcome-to-seel
   baseURL: https://api-test.seel.com/v1
   tags:
+  - Quotes
+  tags_raw:
   - Quote
   properties:
   - type: OpenAPI
