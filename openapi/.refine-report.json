@@ -25,6 +25,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "seel-bill-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-claim-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-contract-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-event-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-fulfillment-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-merchant-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-order-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-product-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "seel-quote-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
