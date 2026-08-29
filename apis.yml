@@ -9,6 +9,18 @@ description: >-
   Events, with contract and claim lifecycle changes delivered via webhooks. Seel
   serves 5,000+ merchants and has protected 24M+ orders. Backed by Lightspeed
   Venture Partners and Techstars.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
