@@ -72,6 +72,8 @@ apis:
   humanURL: https://developer.seel.com/docs/welcome-to-seel
   baseURL: https://api-test.seel.com/v1
   tags:
+  - Bills
+  tags_raw:
   - Bill
   properties:
   - type: OpenAPI
@@ -232,6 +234,8 @@ apis:
   humanURL: https://developer.seel.com/docs/welcome-to-seel
   baseURL: https://api-test.seel.com/v1
   tags:
+  - Merchants
+  tags_raw:
   - Merchant
   properties:
   - type: OpenAPI
