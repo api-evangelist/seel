@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Seel Commerce Protection Bill Fulfillment API
+  title: Seel Commerce Protection Fulfillment API
   version: 2.6.0
   x-generated: '2026-07-21'
   x-method: generated

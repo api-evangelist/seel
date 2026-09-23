@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Seel Commerce Protection Bill Quote API
+  title: Seel Commerce Protection Quote API
   version: 2.6.0
   x-generated: '2026-07-21'
   x-method: generated
@@ -67,58 +67,6 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   schemas:
-    QuoteRequest:
-      type: object
-      required:
-      - line_items
-      - session_id
-      - shipping_address
-      - customer
-      - type
-      - device_category
-      - device_platform
-      - is_default_on
-      properties:
-        line_items:
-          type: array
-          items:
-            type: object
-          description: Cart line items (Item objects).
-        session_id:
-          type: string
-        shipping_address:
-          type: object
-        customer:
-          type: object
-        type:
-          type: string
-          description: Protection type (e.g. Worry-Free Purchase).
-        device_category:
-          type: string
-        device_platform:
-          type: string
-        is_default_on:
-          type: boolean
-        cart_id:
-          type: string
-        merchant_id:
-          type: string
-        device_id:
-          type: string
-        client_ip:
-          type: string
-        extra_info:
-          type: object
-    Error:
-      type: object
-      description: Seel error envelope (not RFC 9457 problem+json).
-      properties:
-        error:
-          type: string
-          description: Human-readable description of the error.
-        trace_id:
-          type: string
-          description: Unique trace identifier to include when contacting support.
     Quote:
       type: object
       properties:
@@ -164,6 +112,58 @@ components:
           type: object
         customer:
           type: object
+        extra_info:
+          type: object
+    Error:
+      type: object
+      description: Seel error envelope (not RFC 9457 problem+json).
+      properties:
+        error:
+          type: string
+          description: Human-readable description of the error.
+        trace_id:
+          type: string
+          description: Unique trace identifier to include when contacting support.
+    QuoteRequest:
+      type: object
+      required:
+      - line_items
+      - session_id
+      - shipping_address
+      - customer
+      - type
+      - device_category
+      - device_platform
+      - is_default_on
+      properties:
+        line_items:
+          type: array
+          items:
+            type: object
+          description: Cart line items (Item objects).
+        session_id:
+          type: string
+        shipping_address:
+          type: object
+        customer:
+          type: object
+        type:
+          type: string
+          description: Protection type (e.g. Worry-Free Purchase).
+        device_category:
+          type: string
+        device_platform:
+          type: string
+        is_default_on:
+          type: boolean
+        cart_id:
+          type: string
+        merchant_id:
+          type: string
+        device_id:
+          type: string
+        client_ip:
+          type: string
         extra_info:
           type: object
   responses:
