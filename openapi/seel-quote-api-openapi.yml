@@ -67,53 +67,6 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   schemas:
-    Quote:
-      type: object
-      properties:
-        quote_id:
-          type: string
-        cart_id:
-          type: string
-        merchant_id:
-          type: string
-        session_id:
-          type: string
-        device_id:
-          type: string
-        device_category:
-          type: string
-        device_platform:
-          type: string
-        client_ip:
-          type: string
-        type:
-          type: string
-        price:
-          type: number
-        sales_tax:
-          type: number
-        currency:
-          type: string
-        status:
-          type: string
-        is_default_on:
-          type: boolean
-        created_ts:
-          type: string
-        line_items:
-          type: array
-          items:
-            type: object
-        coverages:
-          type: array
-          items:
-            type: object
-        shipping_address:
-          type: object
-        customer:
-          type: object
-        extra_info:
-          type: object
     Error:
       type: object
       description: Seel error envelope (not RFC 9457 problem+json).
@@ -164,6 +117,53 @@ components:
           type: string
         client_ip:
           type: string
+        extra_info:
+          type: object
+    Quote:
+      type: object
+      properties:
+        quote_id:
+          type: string
+        cart_id:
+          type: string
+        merchant_id:
+          type: string
+        session_id:
+          type: string
+        device_id:
+          type: string
+        device_category:
+          type: string
+        device_platform:
+          type: string
+        client_ip:
+          type: string
+        type:
+          type: string
+        price:
+          type: number
+        sales_tax:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+        is_default_on:
+          type: boolean
+        created_ts:
+          type: string
+        line_items:
+          type: array
+          items:
+            type: object
+        coverages:
+          type: array
+          items:
+            type: object
+        shipping_address:
+          type: object
+        customer:
+          type: object
         extra_info:
           type: object
   responses:

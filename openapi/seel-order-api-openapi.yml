@@ -102,6 +102,19 @@ paths:
         '404':
           $ref: '#/components/responses/Error'
 components:
+  responses:
+    OK:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Order:
       type: object
@@ -194,19 +207,6 @@ components:
         trace_id:
           type: string
           description: Unique trace identifier to include when contacting support.
-  responses:
-    Error:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    OK:
-      description: Successful response
-      content:
-        application/json:
-          schema:
-            type: object
   securitySchemes:
     SeelApiKey:
       type: apiKey
