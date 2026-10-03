@@ -31,6 +31,19 @@ paths:
         '400':
           $ref: '#/components/responses/Error'
 components:
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    OK:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
   schemas:
     Error:
       type: object
@@ -42,19 +55,6 @@ components:
         trace_id:
           type: string
           description: Unique trace identifier to include when contacting support.
-  responses:
-    OK:
-      description: Successful response
-      content:
-        application/json:
-          schema:
-            type: object
-    Error:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     SeelApiKey:
       type: apiKey
