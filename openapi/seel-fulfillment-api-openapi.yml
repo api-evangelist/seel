@@ -86,18 +86,18 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   responses:
-    Error:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     OK:
       description: Successful response
       content:
         application/json:
           schema:
             type: object
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
